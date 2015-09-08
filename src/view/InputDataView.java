@@ -15,24 +15,32 @@ import javax.swing.border.TitledBorder;
  */
 public class InputDataView extends JPanel {
 
-    private final JLabel notificationLabel;
-    private final JTextArea inputText;
+    private final JTextArea textArea;
+    private final JLabel label;
 
     public InputDataView() {
         setSize(240, 550);
         setPreferredSize(getSize());
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        notificationLabel = new JLabel();
-        inputText = textAreaPanel();
+        textArea = textAreaPanel();
+        label = new JLabel();
     }
 
     public void makeView(Action loadAction, Action cleanAction,
             Action animateAction, Action exampleAction) {
         add(descriptionPanel(exampleAction));
-        add(inputText);
+        add(textArea);
         add(buttonPanel(loadAction, cleanAction));
         add(notificationPanel());
         add(buttonPanel(animateAction));
+    }
+
+    public JTextArea getTextArea() {
+        return textArea;
+    }
+
+    public JLabel getLabel() {
+        return label;
     }
 
     private JTextArea textAreaPanel() {
@@ -59,10 +67,10 @@ public class InputDataView extends JPanel {
     private JPanel notificationPanel() {
         JPanel result = new JPanel(new GridLayout());
         result.setBorder(new TitledBorder("Notificaciones"));
-        result.add(notificationLabel);
         result.setSize(Integer.MAX_VALUE, 150);
         result.setPreferredSize(result.getSize());
         result.setMaximumSize(result.getSize());
+        result.add(label);
         return result;
     }
 }

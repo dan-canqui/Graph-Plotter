@@ -3,11 +3,11 @@ package controller;
 import controller.action.AnimateGraphAction;
 import controller.action.CleanGraphAction;
 import controller.action.LoadGraphAction;
-import javax.swing.Action;
 import model.structure.Graph;
 import view.InputDataView;
-import view.MainView;
 import view.PlotterView;
+import view.MainView;
+import javax.swing.Action;
 
 /**
  *
@@ -38,13 +38,15 @@ public class MainController {
     }
 
     public void cleanGraph() {
-        inputDataController.cleanMessages();
+        inputDataController.cleanNotifications();
+        animateAction.setEnabled(Boolean.FALSE);
         plotterController.clean();
     }
 
     public void loadGraph() {
-        Graph graph = inputDataController.getGraph();
+        Graph graph = inputDataController.buildGraph();
         if (graph != null) {
+            animateAction.setEnabled(Boolean.TRUE);
             plotterController.print(graph);
         }
     }
@@ -58,6 +60,8 @@ public class MainController {
         animateAction = new AnimateGraphAction(this);
         cleanAction = new CleanGraphAction(this);
         loadAction = new LoadGraphAction(this);
+
+        animateAction.setEnabled(Boolean.FALSE);
     }
 
     private void initViews() {
