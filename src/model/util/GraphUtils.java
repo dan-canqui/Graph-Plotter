@@ -6,7 +6,7 @@ import model.structure.Graph;
  *
  * @author Dan Joel Canqui Aviles
  */
-public class GraphFactory {
+public class GraphUtils {
 
     private static final String ADJACENCY_MATRIX ="";
     private static final String ADJACENCY_LIST ="";
@@ -25,6 +25,14 @@ public class GraphFactory {
         return null;
     }
 
+    public static boolean isPlane(Graph graph) {
+        return Boolean.FALSE;
+    }
+
+    public static int steps(Graph graph) {
+        return 0;
+    }
+
     private static Graph buildAdjacencyMatrix(String inputGraph) {
         return null;
     }
@@ -32,6 +40,7 @@ public class GraphFactory {
     private static Graph buildAdjacencyList(String inputGraph) {
         return null;
     }
+
     private static Graph buildEdgeSet(String inputGraph) {
         return null;
     }
