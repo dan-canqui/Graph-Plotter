@@ -3,7 +3,7 @@ package controller;
 import controller.action.ExampleAction;
 import javax.swing.Action;
 import model.structure.Graph;
-import model.util.GraphFactory;
+import model.util.GraphUtils;
 import view.ExampleView;
 import view.InputDataView;
 
@@ -13,9 +13,12 @@ import view.InputDataView;
  */
 public class InputDataController {
 
-    private static final String ANIMATE_ERROR = "";
-    private static final String ACCEPT_MESSAGE = "";
-    private static final String GRAPH_ERROR = "";
+    private static final String ACCEPT_MESSAGE = 
+            "<html>Se ejecuto la <br/>operacion correctamente</html>";
+    private static final String ANIMATE_ERROR = 
+            "<html>No se puede animar.<br/>No es un grafo plano</html>";
+    private static final String GRAPH_ERROR = 
+            "<html>No se puede crear<br/>el grafo</html>";
     private static final String EMPTY = "";
     private final InputDataView inputDataView;
     private final ExampleView exampleView;
@@ -37,7 +40,7 @@ public class InputDataController {
 
     public Graph buildGraph() {
         String input = inputDataView.getTextArea().getText();
-        Graph result = GraphFactory.buildGraph(input);
+        Graph result = GraphUtils.buildGraph(input);
         String message = result == null ? GRAPH_ERROR : ACCEPT_MESSAGE;
         inputDataView.getLabel().setText(message);
         return result;
