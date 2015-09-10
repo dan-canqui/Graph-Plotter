@@ -14,8 +14,13 @@ import java.awt.Graphics;
  */
 public class Edge {
 
-    private Vertex left;
-    private Vertex right;
+    private final Vertex left;
+    private final Vertex right;
+
+    public Edge(Vertex left, Vertex right) {
+        this.left = left;
+        this.right = right;
+    }
 
     public void paint(Graphics g) {
         g.drawLine(left.getX(), left.getY(), right.getX(), right.getY());

@@ -1,6 +1,7 @@
 package controller;
 
 import controller.action.ExampleAction;
+import java.awt.Color;
 import javax.swing.Action;
 import model.structure.Graph;
 import model.util.GraphUtils;
@@ -30,6 +31,8 @@ public class InputDataController {
 
     public void animationMessage(boolean state) {
         String message = state ? ACCEPT_MESSAGE : ANIMATE_ERROR;
+        Color color = state? Color.BLUE : Color.RED;
+        inputDataView.getLabel().setForeground(color);
         inputDataView.getLabel().setText(message);
     }
 
@@ -42,6 +45,8 @@ public class InputDataController {
         String input = inputDataView.getTextArea().getText();
         Graph result = GraphUtils.buildGraph(input);
         String message = result == null ? GRAPH_ERROR : ACCEPT_MESSAGE;
+        Color color = result == null ? Color.RED : Color.BLUE;
+        inputDataView.getLabel().setForeground(color);
         inputDataView.getLabel().setText(message);
         return result;
     }

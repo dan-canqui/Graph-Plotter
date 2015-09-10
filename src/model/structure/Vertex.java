@@ -8,7 +8,6 @@ package model.structure;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 
 /**
  *
@@ -27,6 +26,10 @@ public class Vertex {
         this.y = y;
     }
 
+    public String getValue() {
+        return value;
+    }
+
     public int getX() {
         return x;
     }
@@ -35,10 +38,14 @@ public class Vertex {
         return y;
     }
 
+    public void move() {
+        
+    }
+
     public void paint(Graphics g) {
         g.setColor(Color.BLUE);
-        g.drawOval(x, y, DIAMETER, DIAMETER);
+        g.fillOval(x - 5, y - 5, DIAMETER, DIAMETER);
         g.setColor(Color.BLACK);
-        g.drawString(value, x, y);
+        g.drawString(value, x + 5, y + 5);
     }
 }
